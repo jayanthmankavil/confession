@@ -59,7 +59,8 @@
   <div class="container">
     <h1>Share your Love Confession for Valentine's Day</h1>
     <form id="confession-form">
-      <input type="text" placeholder="Your Name" id="name" required>
+      <input type="text" placeholder="From" id="from" required>
+      <input type="text" placeholder="To" id="to" required>
       <textarea placeholder="Your Confession" id="confession" required></textarea>
       <input type="submit" value="Submit">
     </form>
@@ -74,7 +75,8 @@
     const form = document.querySelector("#confession-form");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = document.querySelector("#name").value;
+      const from = document.querySelector("#from").value;
+      const to = document.querySelector("#to").value;
       const confession = document.querySelector("#confession").value;
   
       // Make the HTTP POST request to the endpoint /confessions
@@ -83,7 +85,7 @@
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: `name=${name}&confession=${confession}`
+        body: `from=${from}&confession=${confession}&to=${to}`
       })
         .then(response => {
           if (response.ok) {
