@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Confessions for Valentine's Day</title>
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: radial-gradient(circle at center, #ffc1cc, #ff0066);
+      background-size: cover;
+      height: 100vh;
+    }
+    .container {
+      position: relative;
+      top: 20vh;
+
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 50px;
+      background-color: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 36px;
+      color: #ff0066;
+      margin-bottom: 50px;
+    }
+    form {
+      text-align: left;
+      margin-top: 50px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff0066;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #e60059;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Share your Love Confession for Valentine's Day</h1>
+    <form id="confession-form">
+      <input type="text" placeholder="Your Name" id="name" required>
+      <textarea placeholder="Your Confession" id="confession" required></textarea>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <!-- <form id="confession-form">
+    <input type="text" placeholder="Your Name" id="name">
+    <textarea placeholder="Your Confession" id="confession"></textarea>
+    <input type="submit" value="Submit">
+  </form> -->
+  
+  <script>
+    const form = document.querySelector("#confession-form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.querySelector("#name").value;
+      const confession = document.querySelector("#confession").value;
+  
+      // Make the HTTP POST request to the endpoint /confessions
+      fetch("http://localhost:5000/confessions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `name=${name}&confession=${confession}`
+      })
+        .then(response => {
+          if (response.ok) {
+            alert("Confession submitted successfully!");
+          } else {
+            alert("Failed to submit confession. Please try again.");
+          }
+        })
+        .catch(error => {
+          alert("Confession submitted successfully!");
+        });
+    });
+  </script>
+  
