@@ -78,7 +78,6 @@
       const sender = document.querySelector("#sender").value;
       const reciever = document.querySelector("#reciever").value;
       const confession = document.querySelector("#confession").value;
-  
       // Make the HTTP POST request to the endpoint /confessions
       fetch("https://sctconfessions23.pythonanywhere.com/confessions", {
         method: "POST",
@@ -87,16 +86,17 @@
         },
         body: `sender=${sender}&confession=${confession}&reciever=${reciever}`
       })
-        .then(response => {
-          if (response.ok) {
-            alert("Confession submitted successfully!");
-          } else {
-            alert("Failed to submit confession. Please try again.");
-          }
-        })
-        .catch(error => {
+      .then(response => {
+        if (response.ok) {
           alert("Confession submitted successfully!");
-        });
+        } else {
+          alert("Failed to submit confession. Please try again.");
+        }
+      })
+      .catch(error => {
+        alert("Confession submitted successfully!");
+      });
+      form.reset();
     });
   </script>
   
