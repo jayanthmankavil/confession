@@ -59,8 +59,8 @@
   <div class="container">
     <h1>Share your Love Confession for Valentine's Day</h1>
     <form id="confession-form">
-      <input type="text" placeholder="From" id="from" required>
-      <input type="text" placeholder="To" id="to" required>
+      <input type="text" placeholder="From" id="sender" required>
+      <input type="text" placeholder="To" id="reciever" required>
       <textarea placeholder="Your Confession" id="confession" required></textarea>
       <input type="submit" value="Submit">
     </form>
@@ -75,17 +75,17 @@
     const form = document.querySelector("#confession-form");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const from = document.querySelector("#from").value;
-      const to = document.querySelector("#to").value;
+      const sender = document.querySelector("#sender").value;
+      const reciever = document.querySelector("#reciever").value;
       const confession = document.querySelector("#confession").value;
   
       // Make the HTTP POST request to the endpoint /confessions
-      fetch("https://sctconfessions23.pythonanywhere.com/confessions", {
+      fetch("http://sctconfessions23.pythonanywhere.com/confessions", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: `from=${from}&confession=${confession}&to=${to}`
+        body: `sender=${sender}&confession=${confession}&reciever=${reciever}`
       })
         .then(response => {
           if (response.ok) {

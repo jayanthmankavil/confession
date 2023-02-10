@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confessions</title>
+</head>
+<body>
+  <h1>Confessions</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Confession</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for confession in confessions %}
+        <tr>
+          <td>{{ confession[0] }}</td>
+          <td>{{ confession[1] }}</td>
+          <td>{{ confession[2] }}</td>
+          <td>{{ confession[2] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
